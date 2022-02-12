@@ -17,7 +17,7 @@ ${NAME} 	:	${OBJS}
 				@echo "\033[32mPipex Compiled !\n"
 
 clean		:	
-				@echo "\033[32m<< Clean process ... >>\033[33;1m"
+				@echo "\033[32m<< clean process ... >>\033[33;1m"
 				@make clean -C ./libft
 				@rm -rf ${OBJS}
 				@echo "\033[32;1mDeleting all '.o' files !\n"
