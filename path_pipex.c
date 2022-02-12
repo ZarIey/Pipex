@@ -6,7 +6,7 @@
 /*   By: ctardy <ctardy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 15:07:10 by ctardy            #+#    #+#             */
-/*   Updated: 2022/02/10 18:53:50 by ctardy           ###   ########.fr       */
+/*   Updated: 2022/02/12 17:02:56 by ctardy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@ char    *cmd_path(char *cmd, char **envp)
 
     i = 0;
     while (ft_strnstr(envp[i], "PATH", 4) == 0)
-        {
             i++;
-        }
     all_paths = ft_split(envp[i] + 5, ':');
     i = 0;
     while (all_paths[i])
@@ -36,7 +34,7 @@ char    *cmd_path(char *cmd, char **envp)
         free(final_path);
         i++;
     }
-    i = -1;
+    i = 0;
     while (all_paths[++i])
         free(all_paths[i]);
     free(all_paths);
@@ -61,4 +59,5 @@ void    pipexec(char *argv, char **envp)
     }
     if (execve(path, cmd, envp) == -1)
         msg_error();
+    return ;
 }

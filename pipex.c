@@ -6,7 +6,7 @@
 /*   By: ctardy <ctardy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 17:02:46 by ctardy            #+#    #+#             */
-/*   Updated: 2022/02/10 18:14:03 by ctardy           ###   ########.fr       */
+/*   Updated: 2022/02/11 19:27:51 by ctardy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void    msg_error(void)
 {
-    printf("Error");
+    perror("\033[31mError");
+    // printf("Error");
     return ;
 }
 
@@ -22,7 +23,7 @@ void    child_fork(char **argv, char **envp, int *fd)
 {
     int file1;
 
-    file1 = open(argv[1], O_RDONLY);
+    file1 = open(argv[1], O_RDONLY, 0777);
     if (file1 == -1)
         msg_error();
     dup2(fd[1], STDOUT_FILENO);
@@ -35,11 +36,11 @@ void    parent_fork(char **argv, char **envp, int *fd)
 {
     int file2;
 
-    file2 = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC);
+    file2 = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
     if (file2 == -1)
         msg_error();
-    dup2(fd[1], STDOUT_FILENO);
-	dup2(file2, STDIN_FILENO);
+    dup2(fd[0], STDIN_FILENO);
+	dup2(file2, STDOUT_FILENO);
 	close(fd[1]);
 	pipexec(argv[3], envp);
 }
