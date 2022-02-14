@@ -6,7 +6,7 @@
 /*   By: ctardy <ctardy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 17:02:46 by ctardy            #+#    #+#             */
-/*   Updated: 2022/02/11 19:27:51 by ctardy           ###   ########.fr       */
+/*   Updated: 2022/02/14 12:54:28 by ctardy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,6 @@ int main(int argc, char **argv, char **envp)
         parent_fork(argv, envp, fd); 
     }
     else
-        printf("Bad arguments, respect the format please/n");
+        perror("Bad arguments, respect the format please\n");
     return (0);
 }
