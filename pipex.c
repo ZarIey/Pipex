@@ -6,7 +6,7 @@
 /*   By: ctardy <ctardy@student.42nice.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 17:02:46 by ctardy            #+#    #+#             */
-/*   Updated: 2022/02/28 10:39:23 by ctardy           ###   ########.fr       */
+/*   Updated: 2022/03/03 13:41:43 by ctardy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	msg_error(void)
 {
 	perror("\033[31mError");
-	return ;
+	exit(EXIT_FAILURE);
 }
 
 void	child_fork(char **argv, char **envp, int *fd)
